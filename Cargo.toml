@@ -2,5 +2,7 @@
 name = "oos"
 version = "0.1.0"
 edition = "2021"
+description = "Compatibility and wrapper around operating system apis."
+license = "MIT"
 
 [dependencies]
