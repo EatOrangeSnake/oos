@@ -1,3 +1,40 @@
+//! Hello everyone! 
+//! The "file" module is a submodule of the "oos" module, 
+//! which provides some apis for the file system. 
+//! The plan is to implement compatibility with various operating systems 
+//! and a large number of filesystems, but for now only Windows is supported.
+//! And only the commonly used functions are implemented.
+//! #Example:
+//! ```
+//! let f = oos::mor::file::File::from("hello world!");
+//! ```
+//! Will open a file. If file is existed, will create a new file.
+//! The file object will closed when droped.
+//! #Else example:
+//! ```
+//! let buffer: [u8;3] = [1, 2, 3];
+//! f <<= &buffer;
+//! ```
+//! Will Write the data that the length is same as the array length into the file.
+//! #And Reading
+//! ```
+//! let buffer: [u8;3] = [0;3];
+//! f >>= &buffer;
+//! ```
+//! #Set pointer and offset current position
+//! ```
+//! f |= 1;
+//! ```
+//! #Set pointer and offset begin of file
+//! ```
+//! f += 1;
+//! ```
+//! #Set pointer and offset end of file
+//! ```
+//! f -= 1;
+//! ```
+
+
 pub use crate::com::file;
 use crate::com::hand::{HND, close};
 
@@ -14,7 +51,7 @@ pub struct File{
 impl From<&str> for File{
     #[inline]
     fn from(value: &str) -> Self {
-        File { file: unsafe{file::ascii::get(
+        Self { file: unsafe{file::ascii::get(
             crate::def::stringify!(value), 
             file::def::access::ALL, 
             file::def::share::NONE, 

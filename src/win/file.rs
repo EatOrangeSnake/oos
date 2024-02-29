@@ -71,6 +71,13 @@ pub mod ascii{
             path: CSTR, 
             security: VOID
         ) -> BOOL;
+        #[link_name = "GetTempFileNameA"]
+        pub fn tmpn(
+            dir: CSTR, 
+            prefix: CSTR, 
+            unique: DWORD, 
+            name: CSTR
+        ) -> DWORD;
     }
 }
 
