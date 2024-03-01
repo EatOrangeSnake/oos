@@ -2,7 +2,7 @@
 name = "oos"
 version = "0.1.0"
 edition = "2021"
-description = "Compatibility and wrapper around operating system apis."
+description = "An integrated C language on the operating system API module, absolutely useful for all module developers!"
 license = "MIT"
 
 [dependencies]

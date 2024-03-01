@@ -11,4 +11,14 @@ pub mod style{
     pub const MENU: DWORD = 0x80000;
     pub const WINDOW: DWORD = BORDER | CAPTION | MAXIZABLE | MINIZABLE | THICK | 
     OVERLAP | MENU;
+    pub const VISIBLE: DWORD = 0x10000000;
+}
+pub mod msg{
+    use crate::def::DWORD;
+    pub const NULL: DWORD = 0;
+    pub const CREATE: DWORD = 1;
+    pub const DESTORY: DWORD = 2;
+    pub const MOVE: DWORD = 3;
+    pub const QUIT: DWORD = 12;
+    pub const PAINT: DWORD = 15;
 }

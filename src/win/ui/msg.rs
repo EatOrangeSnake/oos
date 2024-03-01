@@ -11,13 +11,16 @@ pub struct MSG{
 }
 
 
+unsafe impl Sync for MSG{}
+
+
 pub mod ascii{
     #[link(name = "user32")]
     extern "stdcall"{
         #[link_name = "GetMessageA"]
         pub fn get(
             msg: *mut super::MSG, 
-            hwnd: crate::win::hand::HND, 
+            wnd: crate::win::hand::HND, 
             fil_min: crate::def::UINT, 
             fil_max: crate::def::UINT
         ) -> crate::def::BOOL;
@@ -25,6 +28,13 @@ pub mod ascii{
         pub fn dispatch(
             msg: *mut super::MSG
         ) -> crate::def::BOOL;
+        #[link_name = "DefWindowProcA"]
+        pub fn default(
+            wnd: crate::win::hand::HND, 
+            msg: crate::def::DWORD, 
+            lparam: crate::def::DWORD, 
+            wparam: crate::def::DWORD
+        ) -> crate::def::DWORD;
     }
 }
 
