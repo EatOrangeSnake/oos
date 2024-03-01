@@ -48,18 +48,27 @@ pub struct File{
 }
 
 
+pub macro file($name: expr){
+    crate::mor::file::File{
+        file: unsafe{
+            crate::com::file::ascii::get(
+                crate::def::stringify!($name), 
+                file::def::access::ALL, 
+                file::def::share::NONE, 
+                crate::def::NULL, 
+                file::def::creation::open::ALWAYS, 
+                file::def::attr::NORMAL, 
+                crate::def::NULL
+            )
+        }
+    }
+}
+
+
 impl From<&str> for File{
     #[inline]
     fn from(value: &str) -> Self {
-        Self { file: unsafe{file::ascii::get(
-            crate::def::stringify!(value), 
-            file::def::access::ALL, 
-            file::def::share::NONE, 
-            crate::def::NULL, 
-            file::def::creation::new::ALWAYS, 
-            file::def::attr::NORMAL, 
-            crate::def::NULL
-        )} }
+        file!(value)
     }
 }
 

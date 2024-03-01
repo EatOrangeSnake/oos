@@ -13,7 +13,12 @@ pub struct WCLSA{
 }
 
 
-unsafe impl Sync for WCLSA{}
+pub type PROC = extern "stdcall" fn(
+    crate::com::hand::HND, 
+    crate::def::UINT, 
+    crate::def::UINT, 
+    crate::def::UINT
+) -> crate::def::BOOL;
 
 
 pub mod ascii{
